@@ -3,157 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riverside High School</title>
+<title>Sysams - Access Denied</title>
 <style>
-  body { margin:0; font-family: Arial, sans-serif; background: #f4f4f9; }
-  header {
-    background: url('https://as1.ftcdn.net/jpg/02/13/64/76/1000_F_213647632_3Aez04pISlCePyOzSLG2bYTNPg5j8eE1.jpg') center/cover no-repeat;
-    color:white; padding:40px 20px; text-align:center;
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #c00;
+    text-align: center;
   }
-  nav { display:flex; justify-content:center; gap:20px; background:#004080; padding:15px 0; }
-  nav a { color:white; text-decoration:none; font-weight:bold; }
-  nav a:hover { text-decoration:underline; }
-  .content { padding:30px 20px; max-width:900px; margin:auto; }
-  h2 { color:#004080; }
-
-  /* Login sections */
-  .login-section { margin-bottom:40px; }
-  .login-section a { color:#004080; text-decoration:underline; cursor:pointer; }
-
-  /* Minecraft Games List */
-  .game-list ul { list-style:none; padding:0; }
-  .game-list li {
-    background:white; margin:10px 0; padding:15px 20px;
-    border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    cursor:pointer; transition: transform 0.2s, box-shadow 0.2s;
+  h1 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
   }
-  .game-list li:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
-
-  /* Hidden secret panel button */
-  #secret-panel-btn { display:none; }
-
-  /* Fake Google/Microsoft login buttons */
-  .login-buttons { margin:20px 0; display:flex; justify-content:center; gap:20px; }
-  .login-buttons button {
-    padding:10px 20px; border:none; border-radius:5px; cursor:pointer;
-    font-weight:bold; color:white;
+  p {
+    font-size: 1.2rem;
+    color: #555;
   }
-  .google { background:#4285F4; }
-  .microsoft { background:#F25022; }
-
-  /* Footer */
-  footer {
-    background:#333; color:#ccc; padding:30px 20px; font-size:14px;
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004080;
+    margin-bottom: 20px;
   }
-  footer h3 { color:white; }
-  footer ul { list-style:none; padding:0; }
-  footer li { margin:5px 0; }
 </style>
 </head>
 <body>
-
-<header>
-  <h1>Riverside High School</h1>
-  <p>Welcome to the official student portal</p>
-</header>
-
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Announcements</a>
-  <a href="https://qweea.github.io/riverside/minecraft-games.html">Minecraft Games</a>
-  <a href="#">Contact</a>
-</nav>
-
-<div class="content">
-
-  <!-- Login Sections -->
-  <div class="login-section">
-    <h2>Student Login</h2>
-    <p>Use your credentials to access student resources. <a href="#">Forgot password?</a></p>
-    <div class="login-buttons">
-      <button class="google" onclick="openGoogleLogin()">Login with Google</button>
-      <button class="microsoft" onclick="openMicrosoftLogin()">Login with Microsoft</button>
-    </div>
-  </div>
-
-  <div class="login-section">
-    <h2>Teacher Login</h2>
-    <p>Use your credentials to access teacher resources.</p>
-  </div>
-
-  <!-- Minecraft Games List -->
-  <div class="game-list">
-    <h2>Choose a Minecraft Version</h2>
-    <ul>
-      <li onclick="window.location.href='https://qweea.github.io/riverside/Offline_Download_Version.html'">Minecraft 1.5.2</li>
-      <li onclick="window.location.href='https://qweea.github.io/riverside/minecraft-1-8-8.html'">Minecraft 1.8.8</li>
-      <li onclick="window.location.href='https://qweea.github.io/riverside/minecraft-1-12.html'">Minecraft 1.12</li>
-    </ul>
-  </div>
-
-</div>
-
-<!-- Hidden secret panel button -->
-<button id="secret-panel-btn">Log into panel</button>
-
-<!-- Footer -->
-<footer>
-  <h3>Services</h3>
-  <ul>
-    <li>My Subscriptions</li>
-    <li>My Domains</li>
-    <li>Register a New Domain</li>
-    <li>Freenom World</li>
-    <li>Renew Domains</li>
-    <li>Transfer Domains</li>
-    <li>Free and Paid domains</li>
-    <li>Domain Price Chart</li>
-    <li>WHOIS</li>
-    <li>Partners</li>
-    <li>Resellers</li>
-    <li>IP Agencies</li>
-    <li>Developers</li>
-    <li>Anti-abuse API</li>
-    <li>Freenom API</li>
-    <li>Company</li>
-    <li>Terms and Conditions</li>
-    <li>Press</li>
-    <li>Jobs</li>
-    <li>Contact</li>
-    <li>Support</li>
-    <li>Knowledgebase</li>
-    <li>Downloads</li>
-    <li>Report Abuse</li>
-    <li>Contact</li>
-  </ul>
-</footer>
-
-<script>
-  // Secret panel
-  function openPanel() {
-    let code = prompt("Enter the private code:");
-    if(code === "APS526165") {
-      window.location.href = "https://qweea.github.io/riverside/panel.html";
-    } else if (code === null) {
-      alert("Login cancelled.");
-    } else {
-      alert("Incorrect code.");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const secretBtn = document.getElementById("secret-panel-btn");
-    if(secretBtn) secretBtn.addEventListener("click", openPanel);
-  });
-
-  // Fake Google/Microsoft login popups
-  function openGoogleLogin() {
-    alert("Google login popup (fake)");
-  }
-  function openMicrosoftLogin() {
-    alert("Microsoft login popup (fake)");
-  }
-</script>
-
+  <div class="logo">Sysams</div>
+  <h1>Access Denied.</h1>
+  <p>You do not have permission to view this page.</p>
 </body>
 </html>
