@@ -4,382 +4,156 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Riverside High School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  /* Global Styles */
-  body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    scroll-behavior: smooth;
-  }
-  a { text-decoration: none; color: inherit; }
-
-  /* Header Styles */
+  body { margin:0; font-family: Arial, sans-serif; background: #f4f4f9; }
   header {
     background: url('https://as1.ftcdn.net/jpg/02/13/64/76/1000_F_213647632_3Aez04pISlCePyOzSLG2bYTNPg5j8eE1.jpg') center/cover no-repeat;
-    height: 400px;
-    color: white;
-    position: relative;
+    color:white; padding:40px 20px; text-align:center;
   }
-  header::after {
-    content: "";
-    position: absolute;
-    top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.5);
-  }
-  .header-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-  }
-  .header-content h1 { font-size: 56px; margin: 0; cursor: pointer; }
-  .header-content p { font-size: 22px; margin: 15px 0; }
-  .hero-btn {
-    background-color: #ffcc00;
-    color: black;
-    font-weight: bold;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.3s;
-  }
-  .hero-btn:hover { background-color: #e6b800; }
+  nav { display:flex; justify-content:center; gap:20px; background:#004080; padding:15px 0; }
+  nav a { color:white; text-decoration:none; font-weight:bold; }
+  nav a:hover { text-decoration:underline; }
+  .content { padding:30px 20px; max-width:900px; margin:auto; }
+  h2 { color:#004080; }
 
-  /* Navigation Styles */
-  nav {
-    background-color: #004080;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  nav .logo { color: white; font-size: 24px; font-weight: bold; cursor: pointer; }
-  nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
-  nav ul li { position: relative; }
-  nav ul li button {
-    background: none; border: none; color: white;
-    font-weight: bold; padding: 20px 15px; cursor: pointer; font-size: 16px;
-  }
-  nav ul li button:hover { background-color: #003366; }
-  nav ul li ul {
-    display: none; position: absolute; top: 60px; left: 0;
-    background-color: #004080; padding: 0; min-width: 180px; border-radius: 4px;
-  }
-  nav ul li:hover ul { display: block; }
-  nav ul li ul li button {
-    width: 100%; padding: 12px 20px; text-align: left;
-  }
-  nav ul li ul li button:hover { background-color: #003366; }
+  /* Login sections */
+  .login-section { margin-bottom:40px; }
+  .login-section a { color:#004080; text-decoration:underline; cursor:pointer; }
 
-  /* Main Content */
-  main { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-  .section { margin-bottom: 50px; }
-  .section h2 {
-    color: #004080;
-    border-bottom: 3px solid #004080;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
+  /* Minecraft Games List */
+  .game-list ul { list-style:none; padding:0; }
+  .game-list li {
+    background:white; margin:10px 0; padding:15px 20px;
+    border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    cursor:pointer; transition: transform 0.2s, box-shadow 0.2s;
   }
-  .announcement, .news {
-    background-color: white;
-    padding: 20px;
-    margin: 15px 0;
-    border-left: 6px solid #004080;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
-  }
+  .game-list li:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
 
-  /* Student Portal */
-  .portal {
-    background-color: #004080;
-    color: white;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: 0 auto 50px auto;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    text-align: center;
-  }
-  .portal input {
-    width: 80%; padding: 12px; margin: 10px 0; border: none;
-    border-radius: 4px; font-size: 16px; background-color: #003366; color: white;
-  }
-  .portal input::placeholder { color: #cccccc; }
-  .portal button {
-    width: 85%; padding: 12px; margin-top: 10px;
-    border: none; border-radius: 5px; font-size: 16px; font-weight: bold;
-    cursor: pointer; background-color: #ffcc00; color: black; transition: 0.3s;
-  }
-  .portal button:hover { background-color: #e6b800; }
-  .portal .teacher-btn {
-    background-color: #0078D4; color: white;
-  }
-  .portal .teacher-btn:hover { background-color: #005bb5; }
-  .portal a { color: #ffcc00; text-decoration: underline; font-size: 14px; }
+  /* Hidden secret panel button */
+  #secret-panel-btn { display:none; }
 
-  /* Services Section */
-  .services-section h2 { color: #004080; border-bottom: 3px solid #004080; padding-bottom: 8px; margin-bottom: 20px; }
-  .services-section h3 { color: #004080; margin-bottom: 10px; }
-  .services-section ul { list-style: none; padding: 0; color: #333; }
-  .services-section ul li { margin-bottom: 5px; }
-  .services-section button {
-    padding: 10px 20px; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;
+  /* Fake Google/Microsoft login buttons */
+  .login-buttons { margin:20px 0; display:flex; justify-content:center; gap:20px; }
+  .login-buttons button {
+    padding:10px 20px; border:none; border-radius:5px; cursor:pointer;
+    font-weight:bold; color:white;
   }
-  .google-btn { background-color: #4285F4; color: white; }
-  .google-btn:hover { background-color: #3367D6; }
-  .microsoft-btn { background-color: #0078D4; color: white; }
-  .microsoft-btn:hover { background-color: #005bb5; }
+  .google { background:#4285F4; }
+  .microsoft { background:#F25022; }
 
   /* Footer */
   footer {
-    background-color: #004080; color: white; padding: 30px 20px; text-align: center;
+    background:#333; color:#ccc; padding:30px 20px; font-size:14px;
   }
-  footer p { margin: 5px 0; }
-
-  #hidden-button {
-    display: block;
-    margin: 15px auto 0;
-    padding: 10px 25px;
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    color: black;
-  }
-
-  /* Popup Login Form */
-  #login-popup {
-    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:1000;
-  }
-  #login-popup .popup-content {
-    background:white; padding:30px; border-radius:10px;
-    max-width:400px; width:90%; text-align:center; position:relative;
-  }
-  #login-popup .popup-content input {
-    width:80%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;
-  }
-  #login-popup .popup-content button {
-    padding:10px 20px; margin-top:10px; background:#004080; color:white; border:none; border-radius:5px; cursor:pointer;
-  }
-  #login-popup .close-btn {
-    position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;
-  }
+  footer h3 { color:white; }
+  footer ul { list-style:none; padding:0; }
+  footer li { margin:5px 0; }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
-  <div class="header-content">
-    <h1 onclick="scrollToSection('home-section')">Riverside High School</h1>
-    <p>Excellence in Education and Community</p>
-    <button class="hero-btn" onclick="scrollToSection('about-section')">Learn More</button>
-  </div>
+  <h1>Riverside High School</h1>
+  <p>Welcome to the official student portal</p>
 </header>
 
-<!-- Navigation -->
 <nav>
-  <div class="logo" onclick="scrollToSection('home-section')">RHS</div>
-  <ul>
-    <li><button onclick="scrollToSection('home-section')">Home</button></li>
-    <li>
-      <button>About Us ▾</button>
-      <ul>
-        <li><button onclick="scrollToSection('about-section')">Our School</button></li>
-        <li><button onclick="scrollToSection('academics-section')">Programs</button></li>
-      </ul>
-    </li>
-    <li><button onclick="scrollToSection('admissions-section')">Admissions</button></li>
-    <li><button onclick="scrollToSection('contact-section')">Contact</button></li>
-  </ul>
+  <a href="#">Home</a>
+  <a href="#">Announcements</a>
+  <a href="https://qweea.github.io/riverside/minecraft-games.html">Minecraft Games</a>
+  <a href="#">Contact</a>
 </nav>
 
-<!-- Main Content -->
-<main>
-  <div class="section" id="home-section">
-    <h2>Welcome to Riverside High School</h2>
-    <p>Explore our school, learn about programs, and stay updated with the latest news.</p>
-  </div>
+<div class="content">
 
-  <div class="section" id="about-section">
-    <h2>About Us</h2>
-    <p>Riverside High School has been dedicated to academic excellence and community involvement for over 50 years.</p>
-  </div>
-
-  <div class="section" id="academics-section">
-    <h2>Academics</h2>
-    <p>Our curriculum offers advanced courses, STEM programs, and arts education to foster student growth.</p>
-  </div>
-
-  <div class="section" id="admissions-section">
-    <h2>Admissions</h2>
-    <p>Join Riverside High! Learn about our enrollment process and admission requirements.</p>
-  </div>
-
-  <!-- Student Portal -->
-  <div class="section portal">
-    <h2>Student Portal Login</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button onclick="alert('This is a demo student login!')">Login</button>
-    <p style="margin-top: 10px;">
-      <a href="#">Forgot password?</a>
-    </p>
-    <button class="teacher-btn" style="margin-top: 15px;" onclick="alert('Teacher login demo!')">Teacher Login</button>
-  </div>
-
-  <div class="section" id="contact-section">
-    <h2>Contact</h2>
-    <p>Email: info@riversidehs.edu</p>
-    <p>Phone: (555) 123-4567</p>
-    <p>Address: 123 School Lane, Springfield, USA</p>
-  </div>
-
-  <div class="section">
-    <h2>Announcements</h2>
-    <div class="announcement">
-      <strong>School Closed:</strong> Riverside High will be closed on Friday, September 20th, for staff development.
-    </div>
-    <div class="announcement">
-      <strong>New Library Books:</strong> Check out the new arrivals in the school library, now available for all students.
+  <!-- Login Sections -->
+  <div class="login-section">
+    <h2>Student Login</h2>
+    <p>Use your credentials to access student resources. <a href="#">Forgot password?</a></p>
+    <div class="login-buttons">
+      <button class="google" onclick="openGoogleLogin()">Login with Google</button>
+      <button class="microsoft" onclick="openMicrosoftLogin()">Login with Microsoft</button>
     </div>
   </div>
 
-  <div class="section">
-    <h2>School News</h2>
-    <div class="news">
-      <strong>Science Fair Winners:</strong> Congratulations to all students who participated in this year’s science fair.
-    </div>
-    <div class="news">
-      <strong>Basketball Team:</strong> Riverside High won the regional championship! Great job, Tigers!
-    </div>
+  <div class="login-section">
+    <h2>Teacher Login</h2>
+    <p>Use your credentials to access teacher resources.</p>
   </div>
 
-  <!-- Services & Fake Logins Section -->
-  <div class="section services-section" style="background-color:#f0f0f0; padding:40px 20px;">
-    <h2>Services & Accounts</h2>
-    <div style="display:flex; flex-wrap:wrap; gap:20px;">
-
-      <!-- Services Links -->
-      <div style="flex:1; min-width:200px;">
-        <h3>Services</h3>
-        <ul>
-          <li>My Subscriptions</li>
-          <li>My Domains</li>
-          <li>Register a New Domain</li>
-          <li>School Resources</li>
-          <li>Renew Access</li>
-          <li>Transfer Accounts</li>
-          <li>Free and Paid Services</li>
-          <li>Resource Price Chart</li>
-          <li>WHOIS Lookup</li>
-        </ul>
-      </div>
-
-      <div style="flex:1; min-width:200px;">
-        <h3>Partners & Developers</h3>
-        <ul>
-          <li>Partners</li>
-          <li>Resellers</li>
-          <li>IT Agencies</li>
-          <li>Developers</li>
-          <li>API Access</li>
-          <li>School API</li>
-        </ul>
-      </div>
-
-      <div style="flex:1; min-width:200px;">
-        <h3>Company Info</h3>
-        <ul>
-          <li>About Us</li>
-          <li>Terms & Conditions</li>
-          <li>Press</li>
-          <li>Jobs</li>
-          <li>Contact</li>
-          <li>Support</li>
-          <li>Knowledgebase</li>
-          <li>Downloads</li>
-          <li>Report Abuse</li>
-        </ul>
-      </div>
-
-      <!-- Fake Login Buttons -->
-      <div style="flex:1; min-width:200px; display:flex; flex-direction:column; gap:15px; align-items:flex-start;">
-        <h3>Login Options</h3>
-        <button class="google-btn" onclick="openLoginPopup('Google')">Login with Google</button>
-        <button class="microsoft-btn" onclick="openLoginPopup('Microsoft')">Login with Microsoft</button>
-      </div>
-
-    </div>
-
-    <!-- Fake School Contact Info -->
-    <div style="margin-top:30px; color:#333;">
-      <h3>Contact</h3>
-      <p>Riverside High IT Services</p>
-      <p>Springfield, USA</p>
-      <p>Tel: +1 (555) 987-6543 | Fax: +1 (555) 987-6544</p>
-    </div>
+  <!-- Minecraft Games List -->
+  <div class="game-list">
+    <h2>Choose a Minecraft Version</h2>
+    <ul>
+      <li onclick="window.location.href='https://qweea.github.io/riverside/Offline_Download_Version.html'">Minecraft 1.5.2</li>
+      <li onclick="window.location.href='https://qweea.github.io/riverside/minecraft-1-8-8.html'">Minecraft 1.8.8</li>
+      <li onclick="window.location.href='https://qweea.github.io/riverside/minecraft-1-12.html'">Minecraft 1.12</li>
+    </ul>
   </div>
 
-</main>
-
-<!-- Popup Login Form -->
-<div id="login-popup">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closeLoginPopup()">X</span>
-    <h2 id="popup-title">Login</h2>
-    <input type="text" placeholder="Email"><br>
-    <input type="password" placeholder="Password"><br>
-    <button onclick="alert('Fake login!')">Login</button>
-  </div>
 </div>
+
+<!-- Hidden secret panel button -->
+<button id="secret-panel-btn">Log into panel</button>
 
 <!-- Footer -->
 <footer>
-  <p>© 2025 Riverside High School</p>
-  <p>123 School Lane, Springfield, USA | Phone: (555) 123-4567 | Email: info@riversidehs.edu</p>
-  <button id="hidden-button" onclick="askCode()">Log into panel</button>
+  <h3>Services</h3>
+  <ul>
+    <li>My Subscriptions</li>
+    <li>My Domains</li>
+    <li>Register a New Domain</li>
+    <li>Freenom World</li>
+    <li>Renew Domains</li>
+    <li>Transfer Domains</li>
+    <li>Free and Paid domains</li>
+    <li>Domain Price Chart</li>
+    <li>WHOIS</li>
+    <li>Partners</li>
+    <li>Resellers</li>
+    <li>IP Agencies</li>
+    <li>Developers</li>
+    <li>Anti-abuse API</li>
+    <li>Freenom API</li>
+    <li>Company</li>
+    <li>Terms and Conditions</li>
+    <li>Press</li>
+    <li>Jobs</li>
+    <li>Contact</li>
+    <li>Support</li>
+    <li>Knowledgebase</li>
+    <li>Downloads</li>
+    <li>Report Abuse</li>
+    <li>Contact</li>
+  </ul>
 </footer>
 
 <script>
-  // Smooth scrolling
-  function scrollToSection(sectionId) {
-    const el = document.getElementById(sectionId);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Hidden panel
-  function askCode() {
-    const code = prompt("Enter the private code:");
-    if (code === "APS526165") {
-      window.location.href = "panel.html"; 
+  // Secret panel
+  function openPanel() {
+    let code = prompt("Enter the private code:");
+    if(code === "APS526165") {
+      window.location.href = "https://qweea.github.io/riverside/panel.html";
+    } else if (code === null) {
+      alert("Login cancelled.");
     } else {
-      alert("Incorrect code. Access denied.");
+      alert("Incorrect code.");
     }
   }
 
-  // Popup login
-  function openLoginPopup(service) {
-    document.getElementById('login-popup').style.display = 'flex';
-    document.getElementById('popup-title').innerText = service + ' Login';
+  document.addEventListener("DOMContentLoaded", () => {
+    const secretBtn = document.getElementById("secret-panel-btn");
+    if(secretBtn) secretBtn.addEventListener("click", openPanel);
+  });
+
+  // Fake Google/Microsoft login popups
+  function openGoogleLogin() {
+    alert("Google login popup (fake)");
   }
-  function closeLoginPopup() {
-    document.getElementById('login-popup').style.display = 'none';
+  function openMicrosoftLogin() {
+    alert("Microsoft login popup (fake)");
   }
 </script>
+
 </body>
 </html>
