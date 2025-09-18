@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minecraft Games List</title>
+<title>Sysams - Minecraft Games</title>
 <style>
   body {
     font-family: 'Roboto', sans-serif;
     background: #f4f4f9;
     margin: 0; padding: 0; text-align: center;
+    display: none; /* hide content until correct code */
   }
   header {
     background-color: #004080;
@@ -41,7 +42,7 @@
 <body>
 
 <header>
-  <h1>Minecraft Games</h1>
+  <h1>Sysams - Minecraft Games</h1>
 </header>
 
 <div class="content">
@@ -50,9 +51,23 @@
     <li onclick="window.location.href='https://qweea.github.io/riverside/Offline_Download_Version.html'">Minecraft 1.5.2</li>
     <li onclick="window.location.href='https://qweea.github.io/riverside/minecraft-1-8-8.html'">Minecraft 1.8.8</li>
     <li onclick="window.location.href='https://qweea.github.io/riverside/minecraft-1-12.html'">Minecraft 1.12</li>
-    <!-- Add more versions here -->
   </ul>
 </div>
+
+<script>
+  // Admin code required before showing content
+  const adminCode = "5261"; // change this to whatever your admin code is
+  let input = prompt("Enter Admin code to access Sysams:");
+  if(input === adminCode) {
+    document.body.style.display = "block"; // show content
+  } else if(input === null) {
+    alert("Access cancelled.");
+    window.location.href = "https://qweea.github.io/riverside/"; // redirect if canceled
+  } else {
+    alert("Incorrect code. Redirecting...");
+    window.location.href = "https://qweea.github.io/riverside/"; // redirect if wrong
+  }
+</script>
 
 </body>
 </html>
