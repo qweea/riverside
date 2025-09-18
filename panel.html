@@ -56,16 +56,13 @@
 
 <script>
   // Admin code required before showing content
-  const adminCode = "5261"; // change this to whatever your admin code is
+  const adminCode = "5261"; // your Admin code
   let input = prompt("Enter Admin code to access Sysams:");
   if(input === adminCode) {
     document.body.style.display = "block"; // show content
-  } else if(input === null) {
-    alert("Access cancelled.");
-    window.location.href = "https://qweea.github.io/riverside/"; // redirect if canceled
   } else {
-    alert("Incorrect code. Redirecting...");
-    window.location.href = "https://qweea.github.io/riverside/"; // redirect if wrong
+    alert("Incorrect code. Redirecting to Google...");
+    window.location.href = "https://www.google.com"; // redirect if wrong or cancelled
   }
 </script>
 
